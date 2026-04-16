@@ -24,6 +24,14 @@ This repository contains all data, code, and outputs used to build and evaluate 
 - Python 3 (Jupyter Notebook / Google Colab)
 
 ### Add-on Packages Used 
+- numpy
+- pandas
+- os
+- urllib
+- tarfile
+- matplotlib
+- scikit-learn
+- tensorflow
 
 ### Platform Used
 - macOS / Windows (compatible with both)
@@ -34,78 +42,90 @@ This repository contains all data, code, and outputs used to build and evaluate 
 ## Documentation Map
 
 ### DATA (folder) contains:
-- 
+- 'DataAppendix.pdf' (Data Appendix)
+- 'Data_Entry_2017_v2020.csv' (CSV file containing X-ray results)
 
 ### OUTPUT (folder) contains:
-- 
+- 'DenseNetConfusionMatrix.png' (Dense Net Confusion Matrix)
+- 'DenseNetPredictionDistribution.png' (Dense Net Prediction Distribution Graph)
+- 'EfficientNetConfusionMatrix.png' (Efficient Net Confusion Matrix)
+- 'EfficientNetPredictionDistribution.png' (Efficient Net Prediction Distribution Graph)
+- 'ROCCurveAnalysis.png' (ROC Curve Analysis Graph)
 
 ### SCRIPTS (folder) contains:
-- 
+- 'Project_3_Code.ipynb' (Contains all steps of our code, including pre analysis, analysis, and post analysis)
 
 ---
 
 ## Instructions for Reproducing Results
+1. In GitHub, download the notebook:
+   - `Project_3_Code.ipynb`
 
-Follow these steps to reproduce the results of this project:
+2. Open **Google Colab** and upload the notebook.
 
-### Step 1: Download Files
-- From the GitHub repository:
-  - Download the 
+3. (Optional but recommended) Enable GPU:
+   - Go to `Runtime` → `Change runtime type`  
+   - Select **T4 GPU**  
+   - If using Colab Pro, you may select a more powerful GPU (e.g., A100)
 
----
-
-### Step 2: Open Notebook
-- Open the notebook in:
-  - Jupyter Notebook **OR**
-  - Upload it to **Google Colab**
+4. Run all notebook cells **top-to-bottom**.
 
 ---
 
-### Step 3: Upload Dataset
-- In your notebook environment:
-  - Upload `` to the working directory (same location as the notebook)
+### The notebook will automatically:
+
+- Download the NIH Chest X-ray image dataset using `urllib`
+- Extract and load image files into the runtime environment  
+- Load the metadata CSV file (if included in the notebook or repository)
+
+- Clean and preprocess the data:
+  - Remove missing or inconsistent entries  
+  - Convert labels into binary classes:
+    - `No Finding` → **0 (Normal)**  
+    - All other labels → **1 (Abnormal)**  
+
+- Preprocess images:
+  - Resize to a consistent shape  
+  - Normalize pixel values  
+
+- Apply data augmentation:
+  - Rotation  
+  - Flipping  
+  - Scaling  
+
+- Split the dataset into:
+  - Training set  
+  - Validation set  
+  - Test set  
+
+- Load a pretrained **EfficientNet model**
+- Modify final layers for binary classification  
+- Train the model using transfer learning  
+
+- Evaluate performance using:
+  - Accuracy  
+  - Precision  
+  - Recall (**primary focus**)  
+  - F1 Score  
+  - Confusion matrix  
 
 ---
 
-### Step 4: Run the Notebook
-- Run all cells **from top to bottom**
+### Confirm your results by checking:
+
+- Printed evaluation metrics in the notebook output  
+- Confusion matrix visualization  
+- Model performance meets project benchmark:
+  - ~75% accuracy  
+  - Strong recall for abnormal cases  
 
 ---
 
-### Step 5: What the Code Does
+### Notes
 
-The notebook performs the following steps:
+- The dataset is large and may take several minutes to download and extract  
+- Ensure sufficient runtime memory in Colab  
+- If the runtime disconnects, you may need to re-run all cells  
 
-#### Data Cleaning
-- 
 
 ---
-
-#### Data Aggregation
-- 
-
----
-
-#### Visualization
-- 
-
----
-
-#### Trend Analysis
-- 
-
----
-
-#### Train-Test Split
-- 
-
----
-
-
-
-
-### Step 6: Verify Results
-
-You should confirm your results by checking:
-
-- 

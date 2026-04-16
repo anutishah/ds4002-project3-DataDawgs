@@ -1,7 +1,7 @@
 # ds4002-project3-DataDawgs
 
 ## Repository Contents
-This repository contains all data, code, and outputs used to build and evaluate a convolutional neural network (CNN) for classifying chest X‑ray images as normal or abnormal using the NIH ChestX‑ray14 dataset.
+This repository contains all data, code, and outputs used to build and evaluate a a deep learning model to classify chest X-ray images as normal or abnormal. Using the NIH Chest X-ray dataset, we implement an EfficientNet-based convolutional neural network (CNN) to detect abnormalities and support medical image analysis.
 
 ### Folder Structure
 - **DATA/**  
